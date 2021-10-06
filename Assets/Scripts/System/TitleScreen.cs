@@ -5,35 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
-    public GameObject mainCanvas;
-    public GameObject settingsCanvas;
     private GameManager gameManager;
+    private SettingsManager settingsManager;
 
-    public void Start() {
+    public void Awake() {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
+        settingsManager = (SettingsManager)FindObjectOfType(typeof(SettingsManager));
     }
 
     public void PlayGame(){
         gameManager.InitGame();
-
     }
     public void OpenSettings(){
-        if (settingsCanvas != null) {
-            mainCanvas.SetActive(false);
-            settingsCanvas.SetActive(true);
-        }
-    }
-
-    public void SetVolume(System.Single incVol) {
-        AudioListener.volume = incVol;
-    }
-    public void CloseSettings(){
-        if (settingsCanvas != null) {
-            settingsCanvas.SetActive(false);
-            mainCanvas.SetActive(true);
-        }
+        settingsManager.Open();
     }
     public void QuitGame(){
         gameManager.QuitGame();
+    }
+    public void Continue(){
+        gameManager.ReInitPlayer();
     }
 }

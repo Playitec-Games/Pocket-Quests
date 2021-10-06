@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/System/YouWin.unity
     guid: 1bd1442280307fc4e9100ce58aefba54
   - enabled: 1
-    path: Assets/Scenes/Levels/TestLevel.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
-    guid: 4a4e7d57cb7d0f24ab7c1319cc829bb6
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level2.unity
-    guid: f4a0527b1daacf14dad53c8160ee4601
+    path: Assets/Scenes/Levels/CanariPack/Overworld.unity
+    guid: f7478d66ed591144e93b2fdfb7a5d93d
   m_configObjects: {}
