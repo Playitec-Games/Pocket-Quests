@@ -27,7 +27,6 @@ public class PlayerUnit : UnitBase
         }
 
         base.FixedUpdate();
-        
         if (itemACountdown > 0) {
             itemACountdown -= Time.fixedDeltaTime;
         } else if(itemACountdown < 0) {

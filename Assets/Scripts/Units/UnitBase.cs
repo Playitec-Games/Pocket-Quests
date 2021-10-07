@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 public class UnitBase : MonoBehaviour
 {
     public float speed = 2.0f;
@@ -19,6 +20,7 @@ public class UnitBase : MonoBehaviour
     protected Vector2 facing;
     protected float currentHP;
     protected AudioSource audioSource;
+    protected Animator animator;
 
     virtual protected void Start() {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -26,6 +28,7 @@ public class UnitBase : MonoBehaviour
         facing = new Vector2(0, -1.0f);
         currentHP = maxHP;
         audioSource = gameObject.GetComponent<AudioSource>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     virtual protected void FixedUpdate() {
@@ -33,6 +36,10 @@ public class UnitBase : MonoBehaviour
             currentHP = 0;
             Destroy(gameObject);
         }
+        
+        animator.SetFloat("FaceX",facing.x);
+        animator.SetFloat("FaceY",facing.y);
+        animator.SetFloat("Speed",Mathf.Abs(movement.x) + Mathf.Abs(movement.y));
     }
 
     public void TakeDamage(float damage, Collision2D collision){
