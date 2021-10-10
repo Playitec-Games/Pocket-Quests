@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject hudCanvas;
     public GameObject settingsCanvas;
+    public GameObject textBoxCanvas;
     public GameObject playerPrefab;
     public string initLevel = "TestLevel";
     public float initPlayerX = 0;
@@ -18,12 +19,15 @@ public class GameManager : MonoBehaviour
     private PlayerUnit playerUnit;
     private HudManager hudManager;
     private SettingsManager settingsManager;
+    private Camera mainCamera;
     private float playerDepth = 0;
     private float cameraDepth = -32;    
     void Awake() {
         DontDestroyOnLoad(gameObject);
         hudManager = hudCanvas.GetComponent<HudManager>();
         settingsManager = settingsCanvas.GetComponent<SettingsManager>();
+        mainCamera = gameObject.GetComponent<Camera>();
+        
     }
     private void FixedUpdate() {
         if (playerUnit != null) {
@@ -55,9 +59,9 @@ public class GameManager : MonoBehaviour
         InitPlayer(targetLevel, targetPlayerX, targetPlayerY);
     }
     public void ScreenTransfer(float x, float y) {    
-        Camera.main.transform.SetPositionAndRotation(
+        mainCamera.transform.SetPositionAndRotation(
             new Vector3(x, y, cameraDepth),
-            Camera.main.transform.rotation
+            mainCamera.transform.rotation
         );
     }
     public void LoadLevel(string levelName, float x, float y) {

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class HudManager : MonoBehaviour
 {
     public Text currentHP;
-
     public void updateHP(string incHp) {
         currentHP.text = incHp;
     }
